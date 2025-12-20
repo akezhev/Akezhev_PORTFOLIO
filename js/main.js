@@ -49,12 +49,12 @@ if (selectedTheme) {
   );
 }
 
-// Activate / deactivate the theme manually with the button
+// Активируйте/деактивируйте тему вручную с помощью кнопки.
 themeButton.addEventListener("click", () => {
-  // Add or remove the dark / icon theme
+  // Добавить или удалить темную тему / тему значков
   document.body.classList.toggle(darkTheme);
   themeButton.classList.toggle(iconTheme);
-  // We save the theme and the current icon that the user chose
+  // Мы сохраняем тему оформления и текущий значок, выбранный пользователем.
   localStorage.setItem("selected-theme", getCurrentTheme());
   localStorage.setItem("selected-icon", getCurrentIcon());
 });

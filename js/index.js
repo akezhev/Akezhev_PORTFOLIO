@@ -29,19 +29,15 @@ const swiperTestimonial = new Swiper(".testimonial__swiper", {
     el: ".swiper-pagination",
     dynamicBullets: true,
     clickable: true,
-  }
+  },
 });
 
 // --------------------- SHOW SCROLL UP
 const scrollUp = () => {
-  const scrollUp = document.getElementById('scroll-up')
-  //When the scroll is higher than 350 viewport height, add the
-  this.scrollY >= 350 ? scrollUp.classList.add('show-scroll') : scrollUp.classList.remove('show-scroll')
-}
-window.addEventListener('scroll', scrollUp)
-
-
-
-
-
-
+  const scrollUp = document.getElementById("scroll-up");
+  //Когда высота прокрутки превышает 350 пикселей в области просмотра, добавьте следующее:
+  this.scrollY >= 350
+    ? scrollUp.classList.add("show-scroll")
+    : scrollUp.classList.remove("show-scroll");
+};
+window.addEventListener("scroll", scrollUp);

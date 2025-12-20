@@ -28,7 +28,7 @@ const themeButton = document.getElementById("theme-button");
 const darkTheme = "dark-theme";
 const iconTheme = "ri-sun-line";
 
-//Previously selected topic (if user selected)
+//Ранее выбранная тема (если выбрана пользователем)
 const selectedTheme = localStorage.getItem("selected-theme");
 const selectedIcon = localStorage.getItem("selected-icon");
 

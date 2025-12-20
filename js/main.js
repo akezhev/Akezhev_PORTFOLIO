@@ -32,15 +32,15 @@ const iconTheme = "ri-sun-line";
 const selectedTheme = localStorage.getItem("selected-theme");
 const selectedIcon = localStorage.getItem("selected-icon");
 
-//We obtain the current theme that the interface has by validating the dark-theme class
+//Текущую тему оформления интерфейса мы получаем, проверив наличие класса dark-theme.
 const getCurrentTheme = () =>
   document.body.classList.contains(darkTheme) ? "dark" : "light";
 const getCurrentIcon = () =>
   themeButton.classList.contains(iconTheme) ? "ri-moon-line" : "bx bx-sun";
 
-// We validate if the user previously chose a topic
+// Мы проверяем, выбирал ли пользователь ранее какую-либо тему.
 if (selectedTheme) {
-  // If the vakidation is fulfilled, we ask what the issue was to know if we activated or deactivated the dark
+  // Если условие вакидации выполнено, мы спрашиваем, в чем заключалась проблема, чтобы понять, активировали мы или деактивировали тьму.
   document.body.classList[selectedTheme === "dark" ? "add" : "remove"](
     darkTheme
   );

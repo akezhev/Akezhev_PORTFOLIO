@@ -474,6 +474,7 @@ body.dark-theme {
 .active-modal {
   opacity: 1;
   visibility: visible;
+  z-index: var(--z-tooltip);
 }
 
 /* -------------- WORK -------------- */

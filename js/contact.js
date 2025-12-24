@@ -15,17 +15,17 @@ const sendEmail = (e) => {
     )
     .then(
       () => {
-        // show sent message
+        // показать отправленное сообщение
         contactMessage.textContent = "Message sent successfully ✅";
-        // remove message after five seconds
+        // удалить сообщение через пять секунд
         setTimeout(() => {
           contactMessage.textContent = "";
         }, 5000);
-        //   clear input fields
+        //   очистить поля ввода
         contactForm.reset();
       },
       () => {
-        // show error message
+        // показать сообщение об ошибке
         contactMessage.textContent = "Message not sent (service error) ❌";
       }
     );

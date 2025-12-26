@@ -14,7 +14,7 @@ if (navClose) {
   });
 }
 
-// ----------------------- CHANGE BACKGROUND HEADER
+// ----------------------- СМЕНА ФОНА HEADER
 const bgHeader = () => {
   const header = document.getElementById("header");
   this.scrollY >= 50

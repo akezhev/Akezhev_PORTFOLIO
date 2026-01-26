@@ -28,6 +28,7 @@
 
   /* font and typography */
   --body-font: "Syne", sans-serif;
+  --kirilica-font: 'Kiri', sans-serif;
   --biggest-font-size: 2rem;
   --h1-font-size: 1.5rem;
   --h2-font-size: 1.25rem;
@@ -97,6 +98,7 @@ ul {
   list-style: none;
 }
 a {
+  color: aqua;
   text-decoration: none;
 }
 img {
@@ -507,8 +509,13 @@ body.dark-theme {
   transform: translate(.5rem, -5rem) rotate(-30deg);
 }
 .work__title {
+  font-family: var(--kirilica-font);
   font-size: var(--h2-font-size);
   margin-bottom: .25rem;
+  transition: color 0.3s ease;
+}
+.work__title:hover {
+  color: aqua;
 }
 .work__page {
   padding-bottom: 4rem;

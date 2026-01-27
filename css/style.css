@@ -1,5 +1,9 @@
 /* --------  GOOGLE FONTS ----------- */
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400..800&display=swap');
+
+
+
 /* --------  VARIABLES CSS  --------- */
 :root {
   --header-height: 3.5rem;
@@ -28,7 +32,7 @@
 
   /* font and typography */
   --body-font: "Syne", sans-serif;
-  --kirilica-font: 'Kiri', sans-serif;
+  --accent-font: 'Montserrat', sans-serif;
   --biggest-font-size: 2rem;
   --h1-font-size: 1.5rem;
   --h2-font-size: 1.25rem;
@@ -509,10 +513,11 @@ body.dark-theme {
   transform: translate(.5rem, -5rem) rotate(-30deg);
 }
 .work__title {
-  font-family: var(--kirilica-font);
+  font-family: var(--accent-font);
   font-size: var(--h2-font-size);
   margin-bottom: .25rem;
   transition: color 0.3s ease;
+  font-weight: var(  --font-regular);
 }
 .work__title:hover {
   color: aqua;

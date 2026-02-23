@@ -61,51 +61,127 @@ themeButton.addEventListener("click", () => {
 
 // Смена языка ------------------------------------------------
 
-// Переключение языков (английский/китайский)
+// Переключение языков (русский/английский/китайский)
 const languageButton = document.getElementById("language-button");
-let currentLang = "ru"; // или 'en' по умолчанию
+const htmlElement = document.documentElement;
 
-// Вариант 1: Простое переключение иконки
-languageButton.addEventListener("click", () => {
-  if (currentLang === "ru") {
-    languageButton.classList.remove("ri-translate-2");
-    languageButton.classList.add("ri-english-input"); // иконка для EN
-    currentLang = "en";
-    // Здесь код для смены контента на английский
-    console.log("Switch to English");
-  } else if (currentLang === "en") {
-    languageButton.classList.remove("ri-english-input");
-    languageButton.classList.add("ri-translate-2"); // иконка для китайского
-    currentLang = "cn";
-    // Здесь код для смены контента на китайский
-    console.log("Switch to Chinese");
-  } else {
-    languageButton.classList.remove("ri-translate-2");
-    languageButton.classList.add("ri-translate-2"); // обратно на перевод
-    currentLang = "ru";
-    // Здесь код для смены контента на русский
-    console.log("Switch to Russian");
-  }
-});
-
-// Вариант 2: Смена флагов (если используешь flag-icons)
-const languageButton = document.getElementById("language-button");
-let langIndex = 0;
+// Доступные языки
 const languages = [
-  { code: "ru", flag: "ru", name: "Russian" },
-  { code: "en", flag: "gb", name: "English" },
-  { code: "cn", flag: "cn", name: "Chinese" },
+  {
+    code: "ru",
+    name: "Русский",
+    icon: "ri-translate-2",
+    flag: "ru",
+  },
+  {
+    code: "en",
+    name: "English",
+    icon: "ri-english-input",
+    flag: "gb",
+  },
+  {
+    code: "zh",
+    name: "中文",
+    icon: "ri-chinese-fill",
+    flag: "cn",
+  },
 ];
 
+let currentLangIndex = 0;
+
+// Функция смены языка
+function changeLanguage(index) {
+  const lang = languages[index];
+
+  // Меняем иконку
+  languageButton.className = `ri-${
+    lang.icon === "ri-translate-2" ? "translate-2" : lang.icon
+  } language-icon`;
+
+  // Устанавливаем data-атрибут для CSS индикатора
+  languageButton.setAttribute("data-lang", lang.code);
+
+  // Меняем язык в html теге
+  htmlElement.lang = lang.code;
+
+  // Сохраняем выбор в localStorage
+  localStorage.setItem("selectedLanguage", lang.code);
+
+  // Здесь твоя логика смены контента на сайте
+  updateContent(lang.code);
+
+  console.log(`Language switched to: ${lang.name} (${lang.code})`);
+}
+
+// Функция обновления контента (пример)
+function updateContent(langCode) {
+  // Пример для навигации - замени на свои селекторы
+  const menuItems = {
+    ru: ["Главная", "О нас", "Услуги", "Контакты"],
+    en: ["Home", "About", "Services", "Contact"],
+    zh: ["首页", "关于", "服务", "联系"],
+  };
+
+  // Обновляем текст в навигации (пример - адаптируй под свою структуру)
+  const navLinks = document.querySelectorAll(".nav__link");
+  if (navLinks.length > 0) {
+    navLinks.forEach((link, index) => {
+      if (menuItems[langCode] && menuItems[langCode][index]) {
+        link.textContent = menuItems[langCode][index];
+      }
+    });
+  }
+
+  // Можно добавить обновление других элементов по data-атрибутам
+  document.querySelectorAll("[data-i18n]").forEach((element) => {
+    const key = element.getAttribute("data-i18n");
+    // Здесь должна быть логика подстановки текста из словаря
+    // element.textContent = translations[langCode][key];
+  });
+}
+
+// Загрузка сохраненного языка
+function loadSavedLanguage() {
+  const savedLang = localStorage.getItem("selectedLanguage");
+  if (savedLang) {
+    const index = languages.findIndex((lang) => lang.code === savedLang);
+    if (index !== -1) {
+      currentLangIndex = index;
+    }
+  }
+  changeLanguage(currentLangIndex);
+}
+
+// Обработчик клика по кнопке языка
 languageButton.addEventListener("click", () => {
-  langIndex = (langIndex + 1) % languages.length;
-  const lang = languages[langIndex];
-
-  // Меняем класс флага
-  languageButton.className = `fi fi-${lang.flag} language-icon`;
-
-  // Здесь логика смены языка на сайте
-  console.log(`Switching to ${lang.name}`);
-  // document.documentElement.lang = lang.code;
-  // твоя функция смены контента(lang.code);
+  currentLangIndex = (currentLangIndex + 1) % languages.length;
+  changeLanguage(currentLangIndex);
 });
+
+// Инициализация при загрузке страницы
+document.addEventListener("DOMContentLoaded", loadSavedLanguage);
+
+// Пример словаря для переводов (можно расширить)
+const translations = {
+  ru: {
+    home: "Главная",
+    about: "О нас",
+    services: "Услуги",
+    contact: "Контакты",
+    welcome: "Добро пожаловать",
+  },
+  en: {
+    home: "Home",
+    about: "About",
+    services: "Services",
+    contact: "Contact",
+    welcome: "Welcome",
+  },
+  zh: {
+    home: "首页",
+    about: "关于",
+    services: "服务",
+    contact: "联系",
+    welcome: "欢迎",
+  },
+};

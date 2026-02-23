@@ -1,0 +1,32 @@
+/* Стили для кнопки языка */
+.language-icon {
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-color);
+  transition: color 0.3s, transform 0.3s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.2rem;
+}
+
+.language-icon:hover {
+  color: var(--first-color);
+  transform: scale(1.1);
+}
+
+/* Для флагов (если используешь вариант с флагами) */
+/* Подключаем библиотеку flag-icons если нужно: 
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icons@6.6.6/css/flag-icons.min.css"> */
+.fi {
+  font-size: 1.2rem;
+  line-height: 1;
+  border-radius: 3px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Активное состояние */
+.language-icon.active {
+  color: var(--first-color);
+  font-weight: 500;
+}

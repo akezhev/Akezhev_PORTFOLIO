@@ -1,0 +1,6 @@
+/* Контейнер для языковой кнопки и меню */
+.nav_translate {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}

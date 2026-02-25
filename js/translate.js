@@ -7,17 +7,17 @@ const languages = [
   {
     code: "ru",
     iconClass: "language-icon",
-    emoji: "🇷🇺", // Флаг России
+    emoji: "RU",
   },
   {
     code: "en",
     iconClass: "language-icon",
-    emoji: "EN", // Флаг Великобритании
+    emoji: "EN",
   },
   {
     code: "zh",
     iconClass: "language-icon",
-    emoji: "🇨🇳", // Флаг Китая
+    emoji: "CN",
   },
 ];
 

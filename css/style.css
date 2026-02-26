@@ -77,7 +77,7 @@ body,
 input,
 textarea,
 button {
-  font-family: var(--body-font);
+  font-family: var(--accent-font);
   font-size: var(--normal-font-size);
 }
 body {
@@ -225,6 +225,7 @@ body.dark-theme {
 .nav__close {
   display: inline-flex;
   font-size: 1.25rem;
+  font-family: 'Montserrat';
   cursor: pointer;
 }
 .nav__toggle {
